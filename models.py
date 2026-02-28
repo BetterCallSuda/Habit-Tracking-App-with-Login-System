@@ -38,3 +38,12 @@ class Habit(db.Model):
                 break
         return streak
 
+
+# -------------------------
+# HABIT LOG MODEL
+# -------------------------
+class HabitLog(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.Date, default=datetime.utcnow)
+    completed = db.Column(db.Boolean, default=True)
+
