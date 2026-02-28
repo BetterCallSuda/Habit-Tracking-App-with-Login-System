@@ -81,4 +81,13 @@ def complete_habit(habit_id):
     return redirect(url_for("dashboard"))
 
 
+# ---------------- LOGOUT ----------------
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for("login"))
 
+
+if __name__ == "__main__":
+    app.run(debug=True)
