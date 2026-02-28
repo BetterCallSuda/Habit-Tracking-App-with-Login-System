@@ -70,4 +70,15 @@ def add_habit():
 
     return render_template("add_habit.html")
 
+# ---------------- COMPLETE HABIT ----------------
+@app.route("/complete/<int:habit_id>")
+@login_required
+def complete_habit(habit_id):
+    habit = Habit.query.get(habit_id)
+    log = HabitLog(habit=habit)
+    db.session.add(log)
+    db.session.commit()
+    return redirect(url_for("dashboard"))
+
+
 
