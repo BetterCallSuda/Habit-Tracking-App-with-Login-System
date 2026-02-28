@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Your Habits</title>
+</head>
+<body>
+<h1>Your Habits</h1>
+<a href="/add">Add Habit</a>
+<ul>
+  {% for habit in habits %}
+    <li>
+      {{ habit.name }} — Streak: {{ habit.current_streak() }}
+      <a href="/complete/{{ habit.id }}">Complete Today</a>
+    </li>
+  {% endfor %}
+</ul>
+<a href="/logout">Logout</a>
+
+</body>
+</html>
