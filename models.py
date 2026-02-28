@@ -47,3 +47,5 @@ class HabitLog(db.Model):
     date = db.Column(db.Date, default=datetime.utcnow)
     completed = db.Column(db.Boolean, default=True)
 
+    habit_id = db.Column(db.Integer, db.ForeignKey("habit.id"))
+    habit = db.relationship("Habit", back_populates="logs")
