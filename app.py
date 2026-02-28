@@ -58,3 +58,16 @@ def dashboard():
     return render_template("dashboard.html", habits=current_user.habits)
 
 
+# ---------------- ADD HABIT ----------------
+@app.route("/add", methods=["GET", "POST"])
+@login_required
+def add_habit():
+    if request.method == "POST":
+        habit = Habit(name=request.form["name"], user=current_user)
+        db.session.add(habit)
+        db.session.commit()
+        return redirect(url_for("dashboard"))
+
+    return render_template("add_habit.html")
+
+
