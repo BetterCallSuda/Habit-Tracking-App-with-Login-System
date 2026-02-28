@@ -50,3 +50,11 @@ def login():
 
     return render_template("login.html")
 
+
+# ---------------- DASHBOARD ----------------
+@app.route("/dashboard")
+@login_required
+def dashboard():
+    return render_template("dashboard.html", habits=current_user.habits)
+
+
